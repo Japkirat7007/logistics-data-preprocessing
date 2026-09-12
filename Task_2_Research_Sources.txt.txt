@@ -1,0 +1,34 @@
+TASK 2 – RESEARCH SOURCES
+Data Collection, Cleaning, and Preprocessing for Logistics Analysis
+
+1. UCI Machine Learning Repository
+Dataset: Cargo 2000 Freight Tracking and Tracing
+Purpose: Primary public logistics dataset used for the preprocessing project.
+Dataset characteristics: Sanitized and anonymized air-freight tracking and tracing event data.
+The official documentation was also used to interpret process IDs, transport-leg IDs, planned and effective duration variables, and anonymized airport identifiers.
+Source: https://archive.ics.uci.edu/dataset/382/cargo+2000+freight+tracking+and+tracing
+
+2. pandas Documentation
+Purpose: Reference for CSV loading, DataFrame operations, missing-value detection, duplicate detection, data-type conversion, descriptive statistics, and data preprocessing.
+Source: https://pandas.pydata.org/docs/
+
+3. scikit-learn Documentation – MinMaxScaler
+Purpose: Reference for Min-Max normalization used to rescale selected complete quantitative duration features to the range 0–1.
+Source: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html
+
+4. Interquartile Range (IQR) Method
+Purpose: Statistical approach used to identify potential outliers using the first quartile (Q1), third quartile (Q3), and 1.5 × IQR boundaries.
+Application in this project: IQR-flagged duration observations were treated as potential outliers rather than automatically deleted because extreme freight durations may represent genuine operational delays or disruptions.
+
+PROJECT DATA-PREPROCESSING PRINCIPLES
+
+- Missing information was investigated before treatment.
+- Non-standard '?' placeholders were identified and converted to standard missing-value representation.
+- One completely empty record was removed rather than artificially imputed.
+- Variables with at least 90% missingness were excluded from the analysis-ready dataset for this project.
+- Partially incomplete variables below this threshold were retained rather than aggressively imputed.
+- Numeric-looking identifiers were not treated as continuous measurements.
+- Planned and effective duration fields were converted to numerical format based on the official variable documentation.
+- Statistical outliers were detected but not automatically removed.
+- Min-Max normalization was applied only to 16 complete quantitative duration features.
+- Raw and processed data were maintained separately to support reproducibility and validation.
